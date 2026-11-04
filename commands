@@ -1,3 +1,13 @@
+//before code paste
+
+mkdir VotingSystem
+cd VotingSystem
+npm install -g truffle
+truffle init
+
+
+//after code  paste
+
 truffle compile
 
 truffle migrate --network development
