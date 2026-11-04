@@ -1,0 +1,31 @@
+% 8 Puzzle Problem
+
+% Goal State
+goal([1,2,3,4,5,6,7,8,0]).
+
+% Move empty space
+move([A,B,C,D,E,F,G,H,0],
+     [A,B,C,D,E,F,G,0,H]).
+
+move([A,B,C,D,E,0,G,H,I],
+     [A,B,C,D,0,E,G,H,I]).
+
+move([A,B,C,D,0,F,G,H,I],
+     [A,B,C,0,D,F,G,H,I]).
+
+move([A,B,C,0,E,F,G,H,I],
+     [A,B,C,E,0,F,G,H,I]).
+
+% Solve puzzle
+solve(State) :-
+    goal(State),
+    write('Puzzle Solved!').
+
+solve(State) :-
+    move(State, NewState),
+    write(NewState), nl,
+    solve(NewState).
+
+
+
+?- solve([1,2,3,4,5,6,7,8,0]).
