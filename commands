@@ -12,6 +12,8 @@ truffle compile
 
 truffle migrate --network development
 
+truffle console --network development
+
 let instance = await Voting.deployed()
 
   await instance.candidatesCount()
