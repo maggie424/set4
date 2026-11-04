@@ -1,0 +1,20 @@
+truffle compile
+
+truffle migrate --network development
+
+let instance = await Voting.deployed()
+
+  await instance.candidatesCount()
+
+  await instance.getCandidate(1)
+
+  let accounts = await web3.eth.getAccounts()
+await instance.vote(1, {from: accounts[0]})
+
+  await instance.getCandidate(1)
+
+  await instance.hasVoted(accounts[0])
+
+  await instance.vote(2, {from: accounts[1]})
+
+  await instance.getCandidate(2)
