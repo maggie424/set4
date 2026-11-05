@@ -9,34 +9,22 @@ contract Voting {
         uint voteCount;
     }
 
-    address public owner;
-
     mapping(uint => Candidate) public candidates;
     mapping(address => bool) public hasVoted;
 
     uint public candidatesCount;
 
     constructor() {
-        owner = msg.sender;
-        addCandidate("Candidate A");
-        addCandidate("Candidate B");
-        addCandidate("Candidate C");
-    }
+        candidatesCount = 3;
 
-    function addCandidate(string memory _name) public {
-        require(msg.sender == owner, "Only owner can add candidates");
-
-        candidatesCount++;
-
-        candidates[candidatesCount] = Candidate(
-            candidatesCount,
-            _name,
-            0
-        );
+        candidates[1] = Candidate(1, "Candidate A", 0);
+        candidates[2] = Candidate(2, "Candidate B", 0);
+        candidates[3] = Candidate(3, "Candidate C", 0);
     }
 
     function vote(uint _candidateId) public {
-        require(!hasVoted[msg.sender], "You have already voted");
+        require(!hasVoted[msg.sender], "Already voted");
+
         require(_candidateId > 0 && _candidateId <= candidatesCount,
         "Invalid candidate");
 
